@@ -1,29 +1,21 @@
 # Isogramma
 
-Determina se una parola o una frase è un isogramma.
-
-Per come lo intendiamo in questo esercizio, un isogramma è una parola o una frase che non ha lettere ripetute.
-Sono ammessi spazi e segni di punteggiatura ripetuti.
-
+### Consegna
+Lo scopo di questo esercizio è determinare se una parola è o non è un isogramma: per come lo intendiamo in questo esercizio, un isogramma è una parola o una in cui non si ripetono lettere. <br>
+In un isogramma sono ammessi segni di punteggiatura e spazi ripetuti.
 Esempi di isogrammi:
+* lumberjacks;
+* background;
+* downstream;
+* six-year-old.
 
-- lumberjacks
-- background
-- downstream
-- six-year-old
+Per maggiori informazioni sugli isogrammi, consulta [Isogrammi su wikipedia](https://it.wikipedia.org/wiki/Isogramma).
 
-Gli isogrammi possono essere utili come chiavi di cifratura dato che la corrispondenza fra lettere è univoca. 
+### Soluzione
+La soluzione qua proposta si basa sull'uso di una funzione (rebuilder) che, tramite la funzione <b>.Split(); </b> divide la stringa in base a dei parametri, poi, la ricostruisce: una volta che la stringa in input è ripulita da simboli e spazi il programma entra in un ciclo foreach ed invia alla funzione rebuilder l'input ripulito (word) ed un char memorizzato nella variabile temporanea <b>tmp</b>, che verrà poi utilizzato come parametro per la funzione Split. Una volta ricevuta la stringa splittata secondo 
 
-Isogrammi di 10 lettere, per esempio PATHFINDER, DUMBWAITER o BLACKHORSE, possono essere utilizzate da venditori di beni il cui prezzo può essere negoziato, come macchine usate, gioielli e antichità.
 
-Per esempio le cifre decimali possono essere mappate secondo questo schema:
-
-P	A	T	H	F	I	N	D	E	R
-
-1	2	3	4	5	6	7	8	9	0
-
-Ammettiamo che il prezzo indicato fosse 1200 € ma nel cartellino ci fossero anche le lettere FRR, il venditore saprebbe che il prezzo originale era 500 € in modo da non scendere sotto quella soglia.
-
-Un isogramma di 12 lettere si può usare per mappare i mesi dell'anno.
-
-[Wikipedia sugli Isogrammi](https://it.wikipedia.org/wiki/Isogramma)
+La soluzione qua pubblicata prevede prima di tutto di portare la stringa in input tutta a caratteri minuscoli usanto la funzione <b>.ToLower();</b> della classe string di C#.
+Una volta che la stringa contiene solo simboli e/o caratteri minuscoli verrà passata ad una funzione <b>rebuilder</b> il cui scopo è splittare, dividere la stringa secondo dei determinati parametri, per poi ricostruirla (per maggiori informazioni, vedi sotto).
+Il controllo che verifica che la parola sia o non sia un isogramma avviene tramite un costrutto iterativo <b>foreach</b> che si occupa di ciclare ogni carattere della stringa e passarlo alla funzione rebuilder come nuovo parametro dello split.
+Dopo ogni chiamata alla funzione rebuilder viene controllato che la lunghezza della nuova stringa sia uguale alla lunghezza iniziale (lenght1) - i, e, se non è uguale, significa che la funzione ha rimosso più di un carattere e che c'era una lettera ripetuta: in questo caso, la funzione ritorna falso, altrimenti, se arriva alla fine del ciclo, ritorna vero.
