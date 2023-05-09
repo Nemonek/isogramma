@@ -12,7 +12,7 @@ public static class Isogramma
         int lenght1 = 0;
 
         //creazione di una funzione che ricostruisce la parola rimuovendo i simboli e usando lo strongbuilder
-        static void rebuilder(ref string word, ref char tmp) {
+        void rebuilder(ref string word, ref char tmp) {
             StringBuilder sb = new StringBuilder();
             foreach (string item in word.Split('.', '-', ' ', '"' ,tmp))
                 sb.Append(item);
