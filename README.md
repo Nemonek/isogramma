@@ -18,7 +18,7 @@ sarebbe palindroma.
 
 ### Codice
 
-### Funzione Verifica
+#### Funzione Verifica
 ```C#
   public static bool Verifica(string word)
   {
