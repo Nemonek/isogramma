@@ -49,7 +49,10 @@ sarebbe palindroma.
 In questa funzione la prima cosa che viene fatta è portare tutte le lettere in minuscolo, poi, vengono dichiarate due variabili, la prima (LettereRimosse) fungerà da 
 contatore per quante lettere dovrebbero venir rimosse ad ogni ciclo; la seconda servirà per fare il confronto tra la lunghezza della stringa pulita e la lunghezza 
 della stringa splittata con una delle sue lettere.
-Dopo la dichiarazione e l'inizializzazione delle variabili viene chiamata una prima volta la funzione rebuilder (vedi <a href="#F">qui</a> per maggiori dettagli
+Dopo la dichiarazione e l'inizializzazione delle variabili viene chiamata una prima volta la funzione rebuilder (vedi <a href="#F">qui</a> per dettagli) per ripulire   la stringa da simboli e spazi. <b>Nota bene:</b> la funzione rebuilder accetta due parametri, ma il secondo è facoltativo.
+Una volta pulita la stringa si entra in un ciclo <b>foreach</b> che chiama ad ogni ciclo la funzione rebuilder, passandole come parametro, che verrà poi usato nello 
+split, uno dei char della parola: dopo che la funzione ha splittato la stringa secondo quel char viene fatto un controllo per determinare se la lunghezza è diminuita 
+di più di uno: se è vero, la funzione Verifica ritorna falso. Altrimenti, una volta fuori dal ciclo, ritorna vero. 
 
 #### <a name="F">Funzione rebuilder</a>
 ```C#
@@ -62,12 +65,4 @@ Dopo la dichiarazione e l'inizializzazione delle variabili viene chiamata una pr
 ```
 Questa funzione chiede un parametro obbligatorio passato per riferimento, poi, chiede un parametro facoltativo, passato per valore, che verrà usato come parametro  
 della funzione split.
-Una volta splittata la stringa essa viene ricostruita tramite l'uso di uno <b>StringBuilder</b>.
-
-
-
-
-La soluzione qua pubblicata prevede prima di tutto di portare la stringa in input tutta a caratteri minuscoli usanto la funzione <b>.ToLower();</b> della classe string di C#.
-Una volta che la stringa contiene solo simboli e/o caratteri minuscoli verrà passata ad una funzione <b>rebuilder</b> il cui scopo è splittare, dividere la stringa secondo dei determinati parametri, per poi ricostruirla (per maggiori informazioni, vedi sotto).
-Il controllo che verifica che la parola sia o non sia un isogramma avviene tramite un costrutto iterativo <b>foreach</b> che si occupa di ciclare ogni carattere della stringa e passarlo alla funzione rebuilder come nuovo parametro dello split.
-Dopo ogni chiamata alla funzione rebuilder viene controllato che la lunghezza della nuova stringa sia uguale alla lunghezza iniziale (lenght1) - i, e, se non è uguale, significa che la funzione ha rimosso più di un carattere e che c'era una lettera ripetuta: in questo caso, la funzione ritorna falso, altrimenti, se arriva alla fine del ciclo, ritorna vero.
+Una volta splittata la stringa essa viene ricostruita tramite l'uso di uno <b>StringBuilder</b> e la nuova stringa viene sovrascritta alla vecchia.
